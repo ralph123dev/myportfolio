@@ -69,6 +69,7 @@
                 <li><a href="#competences" class="nav-link">Compétences</a></li>
                 <li><a href="#projets" class="nav-link">Projets</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#" class="nav-link" id="pro-menu-link">Pro</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -247,6 +248,17 @@
                         <span class="project-link coming-soon">Bientôt disponible</span>
                     </div>
                 </div>
+                <div class="project-card animate-on-scroll">
+                    <div class="project-content">
+                        <h3>NextCom S.A</h3>
+                        <p>Site web développé pour NextCom S.A. Application web moderne avec une interface utilisateur élégante et performante.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Fullstack</span>
+                            <span class="tech-tag">Web</span>
+                        </div>
+                        <a href="https://nextcom-r7pv.vercel.app/" target="_blank" class="project-link">Voir le projet →</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -303,6 +315,69 @@
             <p>&copy; 2024 Ralph - Développeur Fullstack. Tous droits réservés.</p>
         </div>
     </footer>
+
+    <!-- Popup Pro -->
+    <div id="pro-popup" class="pro-popup">
+        <div class="pro-popup-content">
+            <span class="pro-popup-close">&times;</span>
+            <h2>Demande de Projet Professionnel</h2>
+            <form id="pro-form" action="https://formspree.io/f/mpzgqwpy" method="POST">
+                <div class="form-group">
+                    <label for="project-type">Type de projet *</label>
+                    <input type="text" id="project-type" name="project-type" required placeholder="Ex: Site web, Application mobile, etc.">
+                </div>
+                
+                <div class="form-group">
+                    <label for="project-name">Nom du projet *</label>
+                    <input type="text" id="project-name" name="project-name" required placeholder="Ex: Mon application e-commerce">
+                </div>
+                
+                <div class="form-group">
+                    <label for="project-description">Description *</label>
+                    <textarea id="project-description" name="project-description" required rows="4" placeholder="Décrivez votre projet en détail..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="example-link">Lien d'exemple (facultatif)</label>
+                    <input type="url" id="example-link" name="example-link" placeholder="https://exemple.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-type">Moyen de contact *</label>
+                    <select id="contact-type" name="contact-type" required>
+                        <option value="">Sélectionnez un moyen de contact</option>
+                        <option value="whatsapp">WhatsApp</option>
+                        <option value="telegram">Telegram</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="instagram">Instagram</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="contact-info-group" style="display: none;">
+                    <label id="contact-info-label">Contact *</label>
+                    <input type="text" id="contact-info" name="contact-info" placeholder="" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="budget">Budget (facultatif)</label>
+                    <input type="text" id="budget" name="budget" placeholder="Ex: 500 000 FCFA">
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-submit">Envoyer</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Animation de succès -->
+    <div id="success-animation" class="success-animation">
+        <div class="success-message">
+            <div class="success-icon">✓</div>
+            <h3>Information envoyée avec succès !</h3>
+        </div>
+    </div>
+
+    <!-- Canvas pour les pétards -->
+    <canvas id="confetti-canvas"></canvas>
 
     <script src="/script.js"></script>
 </body>

@@ -140,27 +140,237 @@ function createParticles() {
     }
 }
 
-// Animation photo -> logo après 6 secondes
-function animateProfileToLogo() {
+// Animation en boucle logo <-> photo
+function animateProfileLogoLoop() {
     const profileImg = document.getElementById('profile-img');
     const logoImg = document.getElementById('logo-img');
     
-    if (profileImg && logoImg) {
+    if (!profileImg || !logoImg) return;
+    
+    let isShowingPhoto = true;
+    
+    function switchToLogo() {
+        profileImg.classList.add('fade-out');
         setTimeout(() => {
-            profileImg.classList.add('fade-out');
-            setTimeout(() => {
-                profileImg.style.display = 'none';
-                logoImg.style.display = 'block';
-                logoImg.classList.add('fade-in');
-            }, 1000);
-        }, 6000); // 6 secondes
+            profileImg.style.display = 'none';
+            logoImg.style.display = 'block';
+            logoImg.classList.remove('fade-out');
+            logoImg.classList.add('fade-in');
+            isShowingPhoto = false;
+            // Après 5 secondes, revenir à la photo
+            setTimeout(switchToPhoto, 5000);
+        }, 1500);
     }
+    
+    function switchToPhoto() {
+        logoImg.classList.add('fade-out');
+        setTimeout(() => {
+            logoImg.style.display = 'none';
+            profileImg.style.display = 'block';
+            profileImg.classList.remove('fade-out');
+            profileImg.classList.add('fade-in');
+            isShowingPhoto = true;
+            // Après 5 secondes, revenir au logo
+            setTimeout(switchToLogo, 5000);
+        }, 1500);
+    }
+    
+    // Démarrer l'animation après 5 secondes (photo visible au départ)
+    setTimeout(switchToLogo, 5000);
+}
+
+// Gestion de la popup Pro
+const proMenuLink = document.getElementById('pro-menu-link');
+const proPopup = document.getElementById('pro-popup');
+const proPopupClose = document.querySelector('.pro-popup-close');
+const contactTypeSelect = document.getElementById('contact-type');
+const contactInfoGroup = document.getElementById('contact-info-group');
+const contactInfoInput = document.getElementById('contact-info');
+const contactInfoLabel = document.getElementById('contact-info-label');
+const proForm = document.getElementById('pro-form');
+const successAnimation = document.getElementById('success-animation');
+
+// Ouvrir la popup
+if (proMenuLink) {
+    proMenuLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        proPopup.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+}
+
+// Fermer la popup
+if (proPopupClose) {
+    proPopupClose.addEventListener('click', () => {
+        proPopup.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+}
+
+// Fermer en cliquant en dehors
+if (proPopup) {
+    proPopup.addEventListener('click', (e) => {
+        if (e.target === proPopup) {
+            proPopup.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}
+
+// Gérer le changement de type de contact
+if (contactTypeSelect) {
+    contactTypeSelect.addEventListener('change', (e) => {
+        const contactType = e.target.value;
+        if (contactType) {
+            contactInfoGroup.style.display = 'block';
+            contactInfoInput.required = true;
+            
+            switch(contactType) {
+                case 'whatsapp':
+                case 'telegram':
+                    contactInfoLabel.textContent = 'Numéro de téléphone *';
+                    contactInfoInput.type = 'tel';
+                    contactInfoInput.placeholder = 'Ex: +237 620 391 950';
+                    break;
+                case 'facebook':
+                case 'instagram':
+                    contactInfoLabel.textContent = 'Lien du profil *';
+                    contactInfoInput.type = 'url';
+                    contactInfoInput.placeholder = 'Ex: https://facebook.com/votre-profil';
+                    break;
+            }
+        } else {
+            contactInfoGroup.style.display = 'none';
+            contactInfoInput.required = false;
+        }
+    });
+}
+
+// Animation de pétard (confetti)
+function createConfetti() {
+    const canvas = document.getElementById('confetti-canvas');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const confetti = [];
+    const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#3b82f6'];
+    
+    class ConfettiParticle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = -10;
+            this.size = Math.random() * 8 + 4;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.speedX = (Math.random() - 0.5) * 4;
+            this.speedY = Math.random() * 3 + 2;
+            this.rotation = Math.random() * 360;
+            this.rotationSpeed = (Math.random() - 0.5) * 10;
+            this.gravity = 0.1;
+        }
+        
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            this.speedY += this.gravity;
+            this.rotation += this.rotationSpeed;
+        }
+        
+        draw() {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation * Math.PI / 180);
+            ctx.fillStyle = this.color;
+            ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+            ctx.restore();
+        }
+    }
+    
+    // Créer des particules
+    for (let i = 0; i < 150; i++) {
+        confetti.push(new ConfettiParticle());
+    }
+    
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        confetti.forEach((particle, index) => {
+            particle.update();
+            particle.draw();
+            
+            if (particle.y > canvas.height) {
+                confetti.splice(index, 1);
+            }
+        });
+        
+        if (confetti.length > 0) {
+            requestAnimationFrame(animate);
+        } else {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    }
+    
+    animate();
+}
+
+// Gérer la soumission du formulaire
+if (proForm) {
+    proForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(proForm);
+        const submitButton = proForm.querySelector('.btn-submit');
+        const originalText = submitButton.textContent;
+        
+        // Désactiver le bouton
+        submitButton.disabled = true;
+        submitButton.textContent = 'Envoi en cours...';
+        
+        try {
+            const response = await fetch('https://formspree.io/f/mpzgqwpy', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                // Fermer la popup
+                proPopup.classList.remove('active');
+                
+                // Afficher l'animation de succès
+                successAnimation.classList.add('active');
+                createConfetti();
+                
+                // Réinitialiser le formulaire
+                proForm.reset();
+                contactInfoGroup.style.display = 'none';
+                
+                // Fermer l'animation après 4 secondes
+                setTimeout(() => {
+                    successAnimation.classList.remove('active');
+                    document.body.style.overflow = '';
+                }, 4000);
+            } else {
+                throw new Error('Erreur lors de l\'envoi');
+            }
+        } catch (error) {
+            alert('Une erreur est survenue. Veuillez réessayer.');
+            console.error(error);
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+        }
+    });
 }
 
 // Initialisation
 document.addEventListener('DOMContentLoaded', () => {
-    // Animation photo -> logo
-    animateProfileToLogo();
+    // Animation en boucle logo <-> photo
+    animateProfileLogoLoop();
     
     // Ajouter un délai pour les animations initiales
     setTimeout(() => {
