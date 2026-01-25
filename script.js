@@ -1,4 +1,3 @@
-// Navigation mobile
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -7,7 +6,7 @@ hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
-// Fermer le menu au clic sur un lien
+
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
@@ -15,7 +14,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
-// Animation au scroll
+
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -29,12 +28,12 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observer tous les éléments avec la classe animate-on-scroll
+
 document.querySelectorAll('.animate-on-scroll').forEach(el => {
     observer.observe(el);
 });
 
-// Effet de parallaxe léger sur le hero
+
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
@@ -43,7 +42,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Changement de couleur de la navbar au scroll
+
 let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
 
@@ -61,7 +60,7 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Animation des cartes de compétences au survol
+
 document.querySelectorAll('.skill-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-10px) scale(1.05)';
@@ -72,7 +71,7 @@ document.querySelectorAll('.skill-card').forEach(card => {
     });
 });
 
-// Animation des cartes de projets
+
 document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
         const link = this.querySelector('.project-link');
@@ -89,7 +88,7 @@ document.querySelectorAll('.project-card').forEach(card => {
     });
 });
 
-// Smooth scroll pour les liens d'ancrage
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -104,7 +103,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Animation de typing pour le titre principal (optionnel)
+
 function typeWriter(element, text, speed = 100) {
     let i = 0;
     element.textContent = '';
@@ -120,7 +119,7 @@ function typeWriter(element, text, speed = 100) {
     type();
 }
 
-// Effet de particules animées en arrière-plan (optionnel)
+
 function createParticles() {
     const hero = document.querySelector('.hero');
     if (!hero) return;
@@ -140,7 +139,7 @@ function createParticles() {
     }
 }
 
-// Animation en boucle logo <-> photo
+
 function animateProfileLogoLoop() {
     const profileImg = document.getElementById('profile-img');
     const logoImg = document.getElementById('logo-img');
@@ -157,7 +156,7 @@ function animateProfileLogoLoop() {
             logoImg.classList.remove('fade-out');
             logoImg.classList.add('fade-in');
             isShowingPhoto = false;
-            // Après 5 secondes, revenir à la photo
+            
             setTimeout(switchToPhoto, 5000);
         }, 1500);
     }
@@ -170,16 +169,16 @@ function animateProfileLogoLoop() {
             profileImg.classList.remove('fade-out');
             profileImg.classList.add('fade-in');
             isShowingPhoto = true;
-            // Après 5 secondes, revenir au logo
+            
             setTimeout(switchToLogo, 5000);
         }, 1500);
     }
     
-    // Démarrer l'animation après 5 secondes (photo visible au départ)
+    
     setTimeout(switchToLogo, 5000);
 }
 
-// Gestion de la popup Pro
+
 const proMenuLink = document.getElementById('pro-menu-link');
 const proPopup = document.getElementById('pro-popup');
 const proPopupClose = document.querySelector('.pro-popup-close');
@@ -190,7 +189,7 @@ const contactInfoLabel = document.getElementById('contact-info-label');
 const proForm = document.getElementById('pro-form');
 const successAnimation = document.getElementById('success-animation');
 
-// Ouvrir la popup
+
 if (proMenuLink) {
     proMenuLink.addEventListener('click', (e) => {
         e.preventDefault();
@@ -199,7 +198,7 @@ if (proMenuLink) {
     });
 }
 
-// Fermer la popup
+
 if (proPopupClose) {
     proPopupClose.addEventListener('click', () => {
         proPopup.classList.remove('active');
@@ -207,7 +206,7 @@ if (proPopupClose) {
     });
 }
 
-// Fermer en cliquant en dehors
+
 if (proPopup) {
     proPopup.addEventListener('click', (e) => {
         if (e.target === proPopup) {
@@ -217,7 +216,7 @@ if (proPopup) {
     });
 }
 
-// Gérer le changement de type de contact
+
 if (contactTypeSelect) {
     contactTypeSelect.addEventListener('change', (e) => {
         const contactType = e.target.value;
@@ -246,7 +245,7 @@ if (contactTypeSelect) {
     });
 }
 
-// Animation de pétard (confetti)
+
 function createConfetti() {
     const canvas = document.getElementById('confetti-canvas');
     if (!canvas) return;
@@ -288,7 +287,7 @@ function createConfetti() {
         }
     }
     
-    // Créer des particules
+
     for (let i = 0; i < 150; i++) {
         confetti.push(new ConfettiParticle());
     }
@@ -315,7 +314,7 @@ function createConfetti() {
     animate();
 }
 
-// Gérer la soumission du formulaire
+
 if (proForm) {
     proForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -324,7 +323,7 @@ if (proForm) {
         const submitButton = proForm.querySelector('.btn-submit');
         const originalText = submitButton.textContent;
         
-        // Désactiver le bouton
+       
         submitButton.disabled = true;
         submitButton.textContent = 'Envoi en cours...';
         
@@ -337,7 +336,13 @@ if (proForm) {
                 }
             });
             
+            console.log('Formspree response status:', response.status);
+            console.log('Formspree response ok:', response.ok);
+            
             if (response.ok) {
+                const result = await response.json();
+                console.log('Formspree response data:', result);
+                
                 // Fermer la popup
                 proPopup.classList.remove('active');
                 
@@ -355,11 +360,13 @@ if (proForm) {
                     document.body.style.overflow = '';
                 }, 4000);
             } else {
+                const errorData = await response.json();
+                console.error('Formspree error:', errorData);
                 throw new Error('Erreur lors de l\'envoi');
             }
         } catch (error) {
             alert('Une erreur est survenue. Veuillez réessayer.');
-            console.error(error);
+            console.error('Submission error:', error);
         } finally {
             submitButton.disabled = false;
             submitButton.textContent = originalText;
@@ -367,12 +374,12 @@ if (proForm) {
     });
 }
 
-// Initialisation
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Animation en boucle logo <-> photo
+    
     animateProfileLogoLoop();
     
-    // Ajouter un délai pour les animations initiales
+   
     setTimeout(() => {
         document.querySelectorAll('.animate-on-scroll').forEach((el, index) => {
             setTimeout(() => {
@@ -382,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500);
 });
 
-// Animation au chargement de la page
+
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';
     setTimeout(() => {
@@ -391,7 +398,7 @@ window.addEventListener('load', () => {
     }, 100);
 });
 
-// Effet de curseur personnalisé (optionnel)
+
 const cursor = document.createElement('div');
 cursor.className = 'custom-cursor';
 cursor.style.cssText = `

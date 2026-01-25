@@ -1,112 +1,63 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-    <title>Ralph - Développeur Fullstack Web & Mobile | Portfolio</title>
-    <meta name="description"
-        content="Ralph, développeur fullstack web et mobile avec 4 ans d'expérience. Spécialisé en HTML, CSS, JavaScript, Python, Flutter, React Native, TypeScript et cybersécurité. Formateur YouTube.">
-    <meta name="keywords"
-        content="développeur fullstack, développeur web, développeur mobile, Ralph, portfolio développeur, React Native, Flutter, Python, JavaScript, TypeScript, cybersécurité">
+    <title>Ralph | Développeur Fullstack Web & Mobile Expert React & Python</title>
+    
+    <meta name="description" 
+          content="Développeur Fullstack avec 4 ans d'expertise. Boostez vos projets avec Ralph : expert React Native, Flutter et Python. Solutions web & mobiles performantes.">
+    
+    <meta name="keywords" content="Ralph développeur, expert Flutter Cameroun, React Native developer, cybersécurité, création application mobile, freelance python">
     <meta name="author" content="Ralph">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="language" content="French">
 
+    <meta property="og:locale" content="fr_FR">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ralphdeveloppeur.vercel.app">
-    <meta property="og:title" content="Ralph - Développeur Fullstack Web & Mobile">
-    <meta property="og:description"
-        content="Portfolio de Ralph, développeur fullstack avec 4 ans d'expérience en développement web et mobile.">
-    <meta property="og:image" content="/images/logo.jpg">
+    <meta property="og:title" content="Ralph - Expert en Développement Fullstack Web & Mobile">
+    <meta property="og:description" content="Découvrez mon portfolio : 4 ans d'expérience au service de vos applications web et mobiles haute performance.">
+    <meta property="og:image" content="https://ralphdeveloppeur.vercel.app/images/og-image.jpg"> <meta property="og:site_name" content="Portfolio de Ralph">
 
-
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://ralphdev.vercl.app/">
-    <meta property="twitter:title" content="Ralph - Développeur Fullstack Web & Mobile">
-    <meta property="twitter:description"
-        content="Portfolio de Ralph, développeur fullstack avec 4 ans d'expérience en développement web et mobile.">
-    <meta property="twitter:image" content="/images/logo.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ralph | Développeur Fullstack">
+    <meta name="twitter:image" content="https://ralphdeveloppeur.vercel.app/images/og-image.jpg">
 
     <link rel="canonical" href="https://ralphdeveloppeur.vercel.app">
-
-
-    <link rel="icon" type="image/jpeg" href="/images/logo.jpg">
-
+    <link rel="icon" type="image/png" href="/images/favicon.png"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Ralph",
+      "url": "https://ralphdeveloppeur.vercel.app",
+      "image": "https://ralphdeveloppeur.vercel.app/images/logo.jpg",
       "jobTitle": "Développeur Fullstack Web & Mobile",
-      "description": "Développeur fullstack avec 4 ans d'expérience en développement web et mobile",
-      "url": "https://ralphdev.com",
+      "description": "Développeur expert en JavaScript, Python et Cybersécurité avec 4 ans d'expérience.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CM" 
+      },
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Fullstack Developer",
+        "skills": "React, Flutter, Python, TypeScript, Cybersécurité"
+      },
       "sameAs": [
         "https://youtube.com/@ralphdeveloppement",
-        "https://youtube.com/@ralphdeveloppeur"
-      ],
-      "knowsAbout": ["HTML", "CSS", "JavaScript", "Python", "TypeScript", "Flutter", "React Native", "Java", "C++", "Cybersécurité"],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+237-620-391-950",
-        "contactType": "WhatsApp"
-      }
+        "https://github.com/ton-pseudo-github",
+        "https://linkedin.com/in/ton-pseudo-linkedin"
+      ]
     }
     </script>
-
-    <style>
-    /* ...existing styles... */
-
-    /* Typing animation styles */
-    .section-title.animated-typing {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-weight: 600;
-    }
-
-    #animated-contact {
-        display: inline-block;
-        font-size: 1.75rem;
-        line-height: 1;
-        transition: color 700ms cubic-bezier(.22, .9, .37, 1);
-        color: #2563eb;
-    }
-
-    .cursor {
-        width: 2px;
-        height: 1.1em;
-        background: currentColor;
-        display: inline-block;
-        vertical-align: bottom;
-        border-radius: 1px;
-        animation: blink 1s steps(2, end) infinite;
-    }
-
-    @keyframes blink {
-        50% {
-            opacity: 0
-        }
-    }
-
-    /* Small responsive tweak */
-    @media (max-width: 600px) {
-        #animated-contact {
-            font-size: 1.35rem;
-        }
-    }
-    </style>
 </head>
 
 <body>
@@ -144,7 +95,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="/images/moi.jpg" alt="Ralph - Développeur Fullstack" class="profile-img" id="profile-img">
+                <img src="/images/moi.jpg" alt="Ralph - Développeur Fullstack" class="profile-img" id="profile-img" style="border-color: rgb(102, 102, 21);">
                 <img src="/images/logo.jpg" alt="Logo Ralph" class="profile-img logo-img" id="logo-img"
                     style="display: none;">
             </div>
@@ -297,15 +248,15 @@
                 </div>
                 <div class="project-card animate-on-scroll">
                     <div class="project-content">
-                        <h3>Logiciel d'Optimisation</h3>
+                        <h3>Logiciel d'Optimisation</h3> 
                         <p>Développement d'un logiciel d'optimisation des machines. Projet actuel en cours de
                             développement.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Desktop</span>
                             <span class="tech-tag">Optimisation</span>
-                        </div>
+                        </div> 
                         <span class="project-link coming-soon">Bientôt disponible</span>
-                    </div>
+                    </div> 
                 </div>
                 <div class="project-card animate-on-scroll">
                     <div class="project-content">
@@ -351,7 +302,7 @@
 
     <section id="contact" class="contact">
         <div class="container">
-            <!-- Replaced static title with animated element -->
+            
             <h2 class="section-title animate-on-scroll animated-typing" aria-live="polite">
                 <span id="animated-contact">Contactez-moi</span>
               <span class="cursor" aria-hidden="true"></span>
@@ -381,6 +332,11 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 Ralph - Développeur Fullstack. Tous droits réservés.</p>
+            <div class="social" aria-label="Réseaux sociaux">
+                <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://youtube.com/@ralphdeveloppement" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            </div>
         </div>
     </footer>
 
@@ -454,7 +410,7 @@
     (function() {
         const el = document.getElementById('animated-contact');
         if (!el) return;
-
+            
         const phrases = [
             "Contactez-moi",
             "Parlons de votre projet",

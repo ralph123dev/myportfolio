@@ -1176,3 +1176,72 @@ section {
     }
 }
 
+/* ...existing styles... */
+
+    /* Typing animation styles */
+    .section-title.animated-typing {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+    }
+
+    #animated-contact {
+        display: inline-block;
+        font-size: 1.75rem;
+        line-height: 1;
+        transition: color 700ms cubic-bezier(.22, .9, .37, 1);
+        color: #2563eb;
+    }
+
+    .cursor {
+        width: 2px;
+        height: 1.1em;
+        background: currentColor;
+        display: inline-block;
+        vertical-align: bottom;
+        border-radius: 1px;
+        animation: blink 1s steps(2, end) infinite;
+    }
+
+    @keyframes blink {
+        50% {
+            opacity: 0
+        }
+    }
+
+    /* Small responsive tweak */
+    @media (max-width: 600px) {
+        #animated-contact {
+            font-size: 1.35rem;
+        }
+    }
+
+    /* social icons in footer */
+    .footer .social {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+      align-items: center;
+    }
+    .footer .social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      color: inherit;
+      background: rgba(255,255,255,0.03);
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+      text-decoration: none;
+    }
+    .footer .social a:hover {
+      transform: translateY(-4px);
+      background: linear-gradient(135deg,#6ee7b7,#60a5fa);
+      color: #fff;
+    }
+    .footer .social i {
+      font-size: 20px;
+      line-height: 1;
+    }
